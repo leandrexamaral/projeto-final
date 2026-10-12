@@ -1,0 +1,83 @@
+<!-- Etapa 01: informa ao navegador que este documento usa HTML moderno. -->
+<!DOCTYPE html>
+<!-- Etapa 02: define o idioma principal da página para português do Brasil. -->
+<html lang="pt-BR">
+<head>
+	<!-- Etapa 03: permite que acentos e outros caracteres sejam exibidos corretamente. -->
+	<meta charset="UTF-8">
+	<!-- Etapa 04: ajusta a largura da página à tela do dispositivo, importante em celulares. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Etapa 05: define o título que aparece na aba do navegador. -->
+	<title>Biografias: Lula e Flávio Bolsonaro</title>
+	<!-- Etapa 06: conecta este HTML ao CSS; o bloco com o mesmo número está em style.css. -->
+	<link rel="stylesheet" href="./style.css">
+	<!-- Etapa 12: conecta o HTML ao JavaScript; defer espera o HTML ser interpretado antes de executar o script.js. -->
+	<script src="./script.js" defer></script>
+</head>
+<body>
+	<!-- Etapa 07: main marca o conteúdo principal desta página. -->
+	<main>
+		<!-- Etapa 08: este article é o modelo reutilizável do perfil; para outro candidato, trocaremos os dados e manteremos a estrutura. -->
+		<article class="candidate-card">
+			<!-- Etapa 18: orienta a pessoa sobre a finalidade do seletor que aparece logo abaixo. -->
+			<p class="candidate-switch__label">Escolha seu candidato</p>
+			<!-- Etapa 17: switch inspirado no #switch do projeto de estudo; os números são apenas visuais nesta etapa. -->
+			<div id="switch" role="group" aria-label="Seletor de candidato">
+				<!-- Etapa 17.1: botão circular que mostra o candidato atual e aciona a troca pelo script.js. -->
+				<button id="candidate-switch-button" type="button" aria-label="Lula, número 13 selecionado. Ative para selecionar Flávio Bolsonaro.">13</button>
+				<!-- Etapa 17.2: trilho do switch com o número da outra opção à direita. -->
+				<span id="other-candidate-number" aria-hidden="true">22</span>
+			</div>
+			<!-- Etapa 10: cria a caixa da foto; o CSS posiciona a imagem e anima a luz apenas no aro circular. -->
+			<figure class="candidate-card__photo">
+				<!-- Etapa 10.1: carrega a foto; o alt descreve a imagem para quem usa leitor de tela. -->
+				<img id="candidate-photo" src="./assets/lula-foto-perfil.png" alt="Ilustração de perfil de Luiz Inácio Lula da Silva">
+			</figure>
+			<!-- Etapa 12.1: mantém a mensagem escondida; o JavaScript a revela se o carregamento da foto falhar. -->
+			<p class="candidate-card__fallback" role="status" hidden>Parece que alguém roubou a imagem. Faz o L.</p>
+			<!-- Etapa 11: identifica o candidato e fica abaixo da área circular da foto. -->
+			<h1 id="candidate-name">Luiz Inácio Lula da Silva</h1>
+			<!-- Etapa 13: grupo de navegação dos links do perfil; a classe correspondente dá aparência de botões no CSS. -->
+			<nav id="candidate-links-navigation" class="candidate-links" aria-label="Links sobre Luiz Inácio Lula da Silva">
+				<!-- Etapa 13.1: agrupa os quatro links como uma lista sem marcadores visuais. -->
+				<ul>
+					<!-- Etapa 13.2: cada li mantém um link separado; o ícone é decorativo porque o texto já identifica o destino. -->
+					<li><a href="https://www.instagram.com/lulaoficial/?hl=pt-br" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>Instagram</a></li>
+					<!-- Etapa 13.3: usa um documento para representar projetos de lei. -->
+					<li><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo" target="_blank" rel="noopener noreferrer"><ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>Projetos de Lei 2026</a></li>
+					<!-- Etapa 13.4: usa passos para representar uma trajetória. -->
+					<li><a href="https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva" target="_blank" rel="noopener noreferrer"><ion-icon name="walk-outline" aria-hidden="true"></ion-icon><span id="trajectory-link-label">Trajetória do Lula</span></a></li>
+					<!-- Etapa 13.5: usa um olho para representar consulta aos últimos feitos pelo governo. -->
+					<li><a href="https://www.google.com/search?q=ultimos+feitos+positivos+e+negativos+lula&sca_esv=bfa957c708c098d7&sxsrf=APpeQnvlLl2WePnPmOROvAzHn7v9PPf4Hg%3A1791825231191&ei=TxXNavuPC-vN1sQPm9feyQ4&biw=1920&bih=911&uact=5&oq=ultimos+feitos+positivos+e+negativos+lula&gs_lp=Egxnd3Mtd2l6LXNlcnAiKXVsdGltb3MgZmVpdG9zIHBvc2l0aXZvcyBlIG5lZ2F0aXZvcyBsdWxhMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBTIFECEYnwVI0zdQsQZY8jVwAngBkAEAmAG9AaABzSyqAQQwLjQxuAEDyAEA-AEBmAIkoALsJsICChAAGEcY1gQYsAPCAgoQIxjwBRjJAhgnwgIEECMYJ8ICERAuGIAEGLEDGIMBGMcBGNEDwgIOEC4YgAQYsQMYxwEY0QPCAggQLhiABBixA8ICChAAGIAEGIoFGEPCAg0QABiABBiKBRhDGLEDwgIQEAAYgAQYigUYQxixAxiDAcICCBAAGIAEGLQHwgIREC4YgAQYsQMYyQMYxwEY0QPCAgsQABiABBiKBRiSA8ICCxAAGIAEGLEDGIMBwgIFEAAYgATCAhEQABiABBiKBRixAxiDARi0B8ICCBAAGIAEGLLEDwgIOEAAYgAQYigUYsQMYgwHCAgQQABgDwgIIEAAYgAQYxwPCAgUQABjvBcICCBAAGIkFGKIEwgIFECEYoAHCAgcQIRgKGKABmAMA4gMFEgExIECIBgGQBgiSBwQyLjM0oAe6zgGyBwQwLjM0uAfkJsIHBjMuMzEuMsgHP4AIAQ&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon>Últimos feitos pelo governo</a></li>
+				</ul>
+			</nav>
+			<!-- Etapa 14: cria uma faixa de atalhos com ícones, separada dos botões de texto por 20px no CSS. -->
+			<nav id="candidate-icon-navigation" class="candidate-icon-links" aria-label="Atalhos dos links sobre Luiz Inácio Lula da Silva">
+				<!-- Etapa 14.1: agrupa os atalhos de ícone em uma lista horizontal. -->
+				<ul>
+					<!-- Etapa 14.2: repete o destino do Instagram como atalho só com ícone. -->
+					<li><a href="https://www.instagram.com/lulaoficial/?hl=pt-br" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Luiz Inácio Lula da Silva" title="Instagram"><ion-icon name="logo-instagram" aria-hidden="true"></ion-icon></a></li>
+					<!-- Etapa 14.3: repete o destino de projetos de lei como atalho só com ícone. -->
+					<li><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo" target="_blank" rel="noopener noreferrer" aria-label="Projetos de Lei 2026" title="Projetos de Lei 2026"><ion-icon name="document-text-outline" aria-hidden="true"></ion-icon></a></li>
+					<!-- Etapa 14.4: repete o destino da trajetória como atalho só com ícone. -->
+					<li><a id="trajectory-icon-link" href="https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva" target="_blank" rel="noopener noreferrer" aria-label="Trajetória do Lula" title="Trajetória do Lula"><ion-icon name="walk-outline" aria-hidden="true"></ion-icon></a></li>
+					<!-- Etapa 14.5: repete a pesquisa sobre feitos do governo como atalho só com ícone. -->
+					<li><a href="https://www.google.com/search?q=ultimos+feitos+positivos+e+negativos+lula&sca_esv=bfa957c708c098d7&sxsrf=APpeQnvlLl2WePnPmOROvAzHn7v9PPf4Hg%3A1791825231191&ei=TxXNavuPC-vN1sQPm9feyQ4&biw=1920&bih=911&uact=5&oq=ultimos+feitos+positivos+e+negativos+lula&gs_lp=Egxnd3Mtd2l6LXNlcnAiKXVsdGltb3MgZmVpdG9zIHBvc2l0aXZvcyBlIG5lZ2F0aXZvcyBsdWxhMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBTIFECEYnwVI0zdQsQZY8jVwAngBkAEAmAG9AaABzSyqAQQwLjQxuAEDyAEA-AEBmAIkoALsJsICChAAGEcY1gQYsAPCAgoQIxjwBRjJAhgnwgIEECMYJ8ICERAuGIAEGLEDGIMBGMcBGNEDwgIOEC4YgAQYsQMYxwEY0QPCAggQLhiABBixA8ICChAAGIAEGIoFGEPCAg0QABiABBiKBRhDGLEDwgIQEAAYgAQYigUYQxixAxiDAcICCBAAGIAEGLQHwgIREC4YgAQYsQMYyQMYxwEY0QPCAgsQABiABBiKBRiSA8ICCxAAGIAEGLEDGIMBwgIFEAAYgATCAhEQABiABBiKBRixAxiDARi0B8ICCBAAGLEDwgIOEAAYgAQYigUYsQMYgwHCAgQQABgDwgIIEAAYgAQYxwPCAgUQABjvBcICCBAAGIkFGKIEwgIFECEYoAHCAgcQIRgKGKABmAMA4gMFEgExIECIBgGQBgiSBwQyLjM0oAe6zgGyBwQwLjM0uAfkJsIHBjMuMzEuMsgHP4AIAQ&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" aria-label="Últimos feitos pelo governo" title="Últimos feitos pelo governo"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></a></li>
+				</ul>
+			</nav>
+		</article>
+	</main>
+	<!-- Etapa 19: deixa os arquivos de áudio disponíveis ao JavaScript sem mostrar controles na página. -->
+	<audio id="lula-audio" src="./assets/lula-audio.mp3" preload="none" hidden></audio>
+	<audio id="flavio-audio" src="./assets/bolsonaro-audio.mp3" preload="none" hidden></audio>
+	<!-- Etapa 16: footer contém o crédito no fim do conteúdo e acompanha a rolagem da página. -->
+	<footer class="candidate-footer">
+		<!-- Etapa 16.1: mostra a frase de autoria, link da Rocketseat e coração decorativo do Ionicons. -->
+		<p>Feito com amor por um aluno da <a href="https://www.rocketseat.com.br/" target="_blank" rel="noopener noreferrer">Rocketseat</a> <ion-icon name="heart" aria-hidden="true"></ion-icon></p>
+	</footer>
+	<!-- Etapa 15: carrega Ionicons para navegadores com suporte a módulos JavaScript. -->
+	<script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+	<!-- Etapa 15.1: carrega a versão compatível com navegadores antigos sem suporte a módulos. -->
+	<script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+/* Etapa 06: continuação do link para style.css no index.html; aqui começa o fundo da página. */
+body {
+	/* Etapa 06.1: garante que a página ocupe pelo menos a altura visível da tela. */
+	min-height: 100vh;
+	/* Etapa 06.2: remove a margem padrão que o navegador coloca ao redor do body. */
+	margin: 0;
+	/* Etapa 06.3: mostra esta cor caso a imagem de fundo demore ou não consiga carregar. */
+	background-color: #8c1111;
+	/* Etapa 06.4: coloca um overlay preto translúcido acima da arte para reduzir seu destaque. */
+	background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("./assets/lula-bg-mobile.png");
+	/* Etapa 06.5: evita que a imagem seja repetida para preencher o espaço. */
+	background-repeat: no-repeat;
+	/* Etapa 06.6: alinha a imagem ao centro na horizontal e ao topo na vertical. */
+	background-position: center top;
+	/* Etapa 06.7: cobre a área mantendo as proporções; partes das bordas podem ser cortadas. */
+	background-size: cover;
+}
+
+/* Etapa 06.8: usa o fundo mobile do Flávio quando a classe é aplicada ao body pelo script.js. */
+body.is-flavio {
+	/* Etapa 06.9: mantém o overlay e carrega a imagem mobile do Flávio. */
+	background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("./assets/flavio-bg-mobile.png");
+}
+
+/* Etapa 06.10: a partir de 770px, troca o fundo mobile pelo fundo desktop de cada candidato. */
+@media (min-width: 770px) {
+	body {
+		/* Etapa 06.11: mantém o overlay e carrega a arte desktop do Lula. */
+		background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("./assets/lula-bg-desktop.png");
+	}
+	/* Etapa 06.12: usa a arte desktop do Flávio quando o perfil selecionado for ele. */
+	body.is-flavio {
+		/* Etapa 06.13: mantém o overlay e carrega a imagem desktop do Flávio. */
+		background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("./assets/flavio-bg-desktop.png");
+	}
+}
+
+/* Etapa 08: estiliza o article.candidate-card criado no index.html. */
+.candidate-card {
+	/* Etapa 08.1: deixa 16px de respiro de cada lado em telas estreitas. */
+	width: calc(100% - 32px);
+	/* Etapa 08.2: impede que o card fique largo demais em telas grandes. */
+	max-width: 420px;
+	/* Etapa 08.3: cria espaço acima e centraliza o card horizontalmente. */
+	margin: 32px auto 0;
+	/* Etapa 08.4: restaura o espaço interno original ao redor do conteúdo. */
+	padding: 24px;
+	/* Etapa 08.5: faz a largura incluir borda e padding, mantendo o card dentro da tela. */
+	box-sizing: border-box;
+	/* Etapa 08.6: não há fundo nem contorno para deixar o card integrado ao background da página. */
+	/* Etapa 08.7: centraliza o texto e os elementos inline dentro do card. */
+	text-align: center;
+	/* Etapa 08.8: mantém o texto branco para contrastar com o background da página. */
+	color: white;
+}
+
+/* Etapa 17: posiciona o switch acima da foto, seguindo o trilho do projeto de estudo. */
+#switch {
+	/* Etapa 17.1: permite posicionar o botão circular dentro do espaço do switch. */
+	position: relative;
+	/* Etapa 17.2: define o comprimento ampliado do trilho para dar espaço ao número 22. */
+	width: 80px;
+	/* Etapa 17.3: define a altura do trilho, menor que o botão circular. */
+	height: 24px;
+	/* Etapa 17.4: centraliza o switch horizontalmente abaixo do texto. */
+	margin: 0 auto;
+}
+
+/* Etapa 18: estiliza o texto que explica o seletor acima do switch. */
+.candidate-switch__label {
+	/* Etapa 18.1: centraliza a frase em relação ao perfil e ao switch. */
+	text-align: center;
+	/* Etapa 18.2: cria espaço entre a frase e o trilho. */
+	margin: 0 0 8px;
+	/* Etapa 18.3: usa tamanho menor que o nome do candidato. */
+	font-size: 14px;
+	/* Etapa 18.4: dá destaque suficiente sem competir com o título. */
+	font-weight: 500;
+	/* Etapa 18.5: usa branco para manter contraste sobre o background. */
+	color: white;
+}
+
+/* Etapa 17.5: estiliza o botão circular que representa o candidato atual. */
+#switch button {
+	/* Etapa 17.6: deixa o botão redondo maior que o trilho, como no projeto de estudo. */
+	width: 32px;
+	height: 32px;
+	/* Etapa 17.7: usa uma superfície branca para destacar o número atual. */
+	background: white;
+	/* Etapa 17.8: remove a borda padrão do botão do navegador. */
+	border: 0;
+	/* Etapa 17.9: transforma o botão quadrado em um círculo. */
+	border-radius: 50%;
+	/* Etapa 17.10: posiciona o círculo sobre a extremidade esquerda do trilho. */
+	position: absolute;
+	/* Etapa 17.11: coloca o círculo acima do trilho. */
+	z-index: 1;
+	/* Etapa 17.12: alinha o círculo ao início do trilho. */
+	left: 0;
+	/* Etapa 17.13: move o círculo até a metade da altura do trilho. */
+	top: 50%;
+	/* Etapa 17.14: centraliza o círculo verticalmente sobre o trilho. */
+	transform: translateY(-50%);
+	/* Etapa 17.15: colore o número para identificar o perfil atual do Lula. */
+	color: #e31b23;
+	/* Etapa 17.16: destaca o número dentro do botão. */
+	font-weight: 700;
+	/* Etapa 17.17: reserva um contorno invisível para o hover não mudar o layout. */
+	outline: 8px solid transparent;
+	/* Etapa 17.18: anima o halo no hover e o deslocamento do botão ao alternar. */
+	transition: outline-color 0.2s, left 0.4s;
+}
+
+/* Etapa 17.19: desloca o botão circular para a direita quando o perfil do Flávio está ativo. */
+body.is-flavio #switch button {
+	/* Etapa 17.20: posiciona o botão na outra extremidade do trilho de 80px. */
+	left: 48px;
+}
+
+/* Etapa 17.21: expande o halo ao redor do botão, como no #switch button:hover da aula. */
+#switch button:hover {
+	/* Etapa 17.22: mostra um halo claro em volta do botão circular. */
+	outline-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Etapa 17.21: desenha o trilho translúcido atrás do botão circular. */
+#switch span {
+	/* Etapa 17.22: faz o trilho ocupar uma linha própria. */
+	display: flex;
+	/* Etapa 17.23: coloca o número 22 à direita do trilho. */
+	justify-content: flex-end;
+	/* Etapa 17.24: centraliza o número dentro da altura do trilho. */
+	align-items: center;
+	/* Etapa 17.25: iguala a largura do trilho à área total do switch. */
+	width: 80px;
+	/* Etapa 17.26: mantém a altura curta do trilho. */
+	height: 24px;
+	/* Etapa 17.27: reserva espaço à direita para o número 22. */
+	padding-right: 7px;
+	/* Etapa 17.28: inclui o padding dentro das dimensões do trilho. */
+	box-sizing: border-box;
+	/* Etapa 17.29: usa uma superfície translúcida atrás dos números. */
+	background: rgba(255, 255, 255, 0.1);
+	/* Etapa 17.30: desenha uma borda sutil ao redor do trilho. */
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	/* Etapa 17.31: suaviza o que aparece atrás do trilho. */
+	backdrop-filter: blur(4px);
+	/* Etapa 17.32: arredonda as pontas do trilho. */
+	border-radius: 9999px;
+	/* Etapa 17.33: usa azul-claro para identificar visualmente a opção Flávio. */
+	color: #7dd3fc;
+	/* Etapa 17.34: mantém o número legível sobre a superfície translúcida. */
+	font-weight: 700;
+}
+
+/* Etapa 10: seleciona a caixa figure da foto criada no index.html. */
+.candidate-card__photo {
+	/* Etapa 10.1: define a largura da área circular que receberá a imagem. */
+	width: 160px;
+	/* Etapa 10.2: iguala a altura à largura para formar uma área quadrada antes do recorte circular. */
+	height: 160px;
+	/* Etapa 10.3: restaura os espaços originais acima e abaixo e centraliza a caixa. */
+	margin: 24px auto 16px;
+	/* Etapa 10.4: posiciona a camada animada em relação aos limites desta foto. */
+	position: relative;
+	/* Etapa 10.5: transforma a caixa quadrada em um círculo. */
+	border-radius: 50%;
+	/* Etapa 10.6: mantém uma borda escura constante sob o ponto de luz em movimento. */
+	background-color: #164650;
+}
+
+/* Etapa 10.7: cria uma camada decorativa atrás da foto para desenhar o aro animado. */
+.candidate-card__photo::before {
+	/* Etapa 10.8: cria o pseudo-elemento sem adicionar outra tag ao HTML. */
+	content: "";
+	/* Etapa 10.9: estende a camada por toda a caixa circular da foto. */
+	position: absolute;
+	/* Etapa 10.10: encosta a camada nos quatro lados da caixa. */
+	inset: 0;
+	/* Etapa 10.11: arredonda a camada para acompanhar o formato circular. */
+	border-radius: 50%;
+	/* Etapa 10.12: desenha um gradiente cônico com uma faixa clara e colorida. */
+	background: conic-gradient(transparent 0deg 300deg, #00e5ff 322deg, #ffffff 340deg, #00e5ff 352deg, transparent 360deg);
+	/* Etapa 10.13: gira apenas a camada do gradiente para a luz percorrer o aro. */
+	animation: pass-light 6s linear infinite;
+}
+
+/* Etapa 10.14: seleciona a foto no HTML e a posiciona sobre o centro do gradiente. */
+.candidate-card__photo img {
+	/* Etapa 10.15: posiciona a foto dentro do aro, sem girá-la junto com a luz. */
+	position: absolute;
+	/* Etapa 10.16: deixa uma faixa de 4px ao redor para o aro ficar visível. */
+	inset: 4px;
+	/* Etapa 10.17: define a largura da foto descontando os 4px de cada lado. */
+	width: calc(100% - 8px);
+	/* Etapa 10.18: define a altura da foto descontando os 4px de cima e de baixo. */
+	height: calc(100% - 8px);
+	/* Etapa 10.19: transforma a própria imagem em círculo. */
+	border-radius: 50%;
+	/* Etapa 10.20: mantém a foto acima do gradiente que gira atrás dela. */
+	z-index: 1;
+	/* Etapa 10.21: preenche a área sem esticar a imagem; as bordas podem ser cortadas. */
+	object-fit: cover;
+}
+
+/* Etapa 12.1: estiliza a mensagem de fallback do index.html, revelada pelo script.js em caso de erro. */
+.candidate-card__fallback {
+	/* Etapa 12.2: cria espaço ao redor da mensagem sem adicionar outro painel. */
+	margin: 24px 0 16px;
+	/* Etapa 12.3: ajusta o texto para leitura em uma tela pequena. */
+	font-size: 16px;
+	/* Etapa 12.4: destaca a mensagem sobre o background sem escurecer o card. */
+	font-weight: 600;
+	/* Etapa 12.5: cria contraste ao redor das letras sobre a imagem de fundo. */
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Etapa 10.22: define uma volta completa da luz em torno do aro da foto. */
+@keyframes pass-light {
+	/* Etapa 10.23: a luz começa na posição inicial do círculo. */
+	from {
+		transform: rotate(0turn);
+	}
+	/* Etapa 10.24: a luz termina uma volta completa e reinicia o ciclo. */
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+/* Etapa 11: ajusta o título do candidato dentro do card. */
+.candidate-card h1 {
+	/* Etapa 11.1: remove a margem padrão do título para controlar o espaçamento. */
+	margin: 0;
+	/* Etapa 11.2: dá espaço entre as linhas caso o nome quebre em telas estreitas. */
+	line-height: 1.2;
+	/* Etapa 11.3: mantém o título adequado ao tamanho de um perfil mobile. */
+	font-size: 22px;
+}
+
+/* Etapa 13: posiciona a lista de links abaixo do nome dentro do perfil do Lula. */
+.candidate-links {
+	/* Etapa 13.1: restaura o espaço original entre o título e o primeiro botão. */
+	margin-top: 28px;
+}
+
+/* Etapa 13.2: organiza os quatro itens em uma coluna vertical. */
+.candidate-links ul {
+	/* Etapa 13.3: remove os marcadores padrão da lista. */
+	list-style: none;
+	/* Etapa 13.4: ativa o layout flexível para controlar direção e espaçamento. */
+	display: flex;
+	/* Etapa 13.5: empilha os links de cima para baixo em telas mobile. */
+	flex-direction: column;
+	/* Etapa 13.6: restaura o espaço original entre cada link. */
+	gap: 12px;
+	/* Etapa 13.7: remove o recuo padrão da lista. */
+	margin: 0;
+	/* Etapa 13.8: remove o espaço interno padrão da lista. */
+	padding: 0;
+}
+
+/* Etapa 13.9: transforma os links da lista em controles com aparência de botão. */
+.candidate-links a {
+	/* Etapa 13.10: usa flexbox para centralizar o texto dentro do botão visual. */
+	display: flex;
+	/* Etapa 13.10.1: separa o ícone do texto sem quebrar o alinhamento do botão. */
+	gap: 10px;
+	/* Etapa 13.11: centraliza o texto verticalmente. */
+	align-items: center;
+	/* Etapa 13.12: centraliza o texto horizontalmente. */
+	justify-content: center;
+	/* Etapa 13.13: define a altura total estável de cada botão. */
+	min-height: 52px;
+	/* Etapa 13.14: mantém espaço entre o texto e as bordas do botão. */
+	padding: 12px 16px;
+	/* Etapa 13.15: inclui padding e borda dentro da altura definida acima. */
+	box-sizing: border-box;
+	/* Etapa 13.16: desenha um contorno claro para separar o botão do fundo. */
+	border: 1px solid rgba(255, 255, 255, 0.55);
+	/* Etapa 13.17: arredonda levemente os cantos do botão. */
+	border-radius: 8px;
+	/* Etapa 13.18: aplica um fundo translúcido sem criar um painel opaco. */
+	background-color: rgba(0, 0, 0, 0.42);
+	/* Etapa 13.19: mantém o texto legível sobre a arte do fundo. */
+	color: white;
+	/* Etapa 13.20: remove o sublinhado padrão dos links. */
+	text-decoration: none;
+	/* Etapa 13.21: destaca o texto para facilitar a leitura. */
+	font-weight: 600;
+	/* Etapa 13.22: anima suavemente as mudanças de cor ao passar o mouse. */
+	transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Etapa 13.23: mostra visualmente qual link está sob o ponteiro do mouse. */
+.candidate-links a:hover {
+	/* Etapa 13.24: clareia o fundo do botão durante o hover. */
+	background-color: rgba(255, 255, 255, 0.18);
+	/* Etapa 13.25: aumenta o contraste da borda durante o hover. */
+	border-color: white;
+}
+
+/* Etapa 13.26: destaca o link quando alguém navega usando teclado. */
+.candidate-links a:focus-visible {
+	/* Etapa 13.27: desenha um contorno visível sem alterar o tamanho do botão. */
+	outline: 3px solid #00e5ff;
+	/* Etapa 13.28: separa o contorno do botão para ficar fácil de enxergar. */
+	outline-offset: 3px;
+}
+
+/* Etapa 13.29: define o tamanho dos ícones decorativos que acompanham o texto dos botões. */
+.candidate-links ion-icon {
+	/* Etapa 13.30: mantém um tamanho consistente para todos os ícones da lista. */
+	font-size: 20px;
+}
+
+/* Etapa 14: posiciona a nova faixa de ícones abaixo da lista de botões. */
+.candidate-icon-links {
+	/* Etapa 14.1: cria o espaço pedido entre o último botão e a faixa inferior. */
+	margin-top: 20px;
+}
+
+/* Etapa 14.2: alinha os quatro atalhos em uma linha e distribui espaço entre eles. */
+.candidate-icon-links ul {
+	/* Etapa 14.3: remove os marcadores da lista de atalhos. */
+	list-style: none;
+	/* Etapa 14.4: usa flexbox para manter os ícones lado a lado. */
+	display: flex;
+	/* Etapa 14.5: centraliza a faixa horizontalmente. */
+	justify-content: center;
+	/* Etapa 14.6: define a distância entre cada atalho de ícone. */
+	gap: 16px;
+	/* Etapa 14.7: remove a margem padrão da lista. */
+	margin: 0;
+	/* Etapa 14.8: remove o preenchimento padrão da lista. */
+	padding: 0;
+}
+
+/* Etapa 14.9: mantém uma área de toque estável ao redor dos ícones sem desenhar um círculo. */
+.candidate-icon-links a {
+	/* Etapa 14.10: usa flexbox para centralizar o ícone dentro do círculo. */
+	display: flex;
+	/* Etapa 14.11: centraliza o ícone na vertical. */
+	align-items: center;
+	/* Etapa 14.12: centraliza o ícone na horizontal. */
+	justify-content: center;
+	/* Etapa 14.13: define largura estável para cada botão de ícone. */
+	width: 48px;
+	/* Etapa 14.14: define altura igual à largura para criar um botão quadrado. */
+	height: 48px;
+	/* Etapa 14.15: colore diretamente o ícone sem adicionar fundo ou borda. */
+	color: white;
+	/* Etapa 14.16: anima suavemente a cor do ícone no hover. */
+	transition: color 0.2s;
+}
+
+/* Etapa 14.17: muda a cor do ícone quando o ponteiro passa sobre o atalho. */
+.candidate-icon-links a:hover {
+	/* Etapa 14.18: usa ciano para indicar o hover sem criar uma forma ao redor. */
+	color: #00e5ff;
+}
+
+/* Etapa 14.19: mostra foco visível quando o atalho é alcançado pelo teclado. */
+.candidate-icon-links a:focus-visible {
+	/* Etapa 14.20: destaca o atalho com contorno ciano para navegação por teclado. */
+	outline: 3px solid #00e5ff;
+	/* Etapa 14.21: mantém um espaço entre o ícone e seu contorno de foco. */
+	outline-offset: 3px;
+}
+
+/* Etapa 14.22: define o tamanho visual dos ícones na faixa inferior. */
+.candidate-icon-links ion-icon {
+	/* Etapa 14.23: deixa os símbolos maiores que os ícones junto ao texto. */
+	font-size: 24px;
+}
+
+/* Etapa 16: posiciona o crédito no fim do conteúdo da página. */
+.candidate-footer {
+	/* Etapa 16.1: separa o rodapé da faixa de ícones e centraliza seu bloco. */
+	margin: 32px auto 0;
+	/* Etapa 16.2: mantém respiro nas laterais e abaixo do texto em telas pequenas. */
+	padding: 0 16px 24px;
+	/* Etapa 16.3: centraliza a frase e o coração no rodapé. */
+	text-align: center;
+	/* Etapa 16.4: usa um tamanho discreto para o crédito. */
+	font-size: 14px;
+	/* Etapa 16.5: define branco para o texto ficar legível sobre o fundo escuro. */
+	color: white;
+}
+
+/* Etapa 16.6: ajusta o parágrafo para alinhar o coração com o texto. */
+.candidate-footer p {
+	/* Etapa 16.7: remove a margem padrão do parágrafo. */
+	margin: 0;
+}
+
+/* Etapa 16.8: diferencia o link da Rocketseat do restante do texto do rodapé. */
+.candidate-footer a {
+	/* Etapa 16.9: usa ciano para destacar o link sobre o fundo escuro. */
+	color: #00e5ff;
+	/* Etapa 16.10: mantém o sublinhado para identificar visualmente o link. */
+	text-decoration: underline;
+	/* Etapa 16.11: afasta um pouco o sublinhado das letras para facilitar a leitura. */
+	text-underline-offset: 3px;
+}
+
+/* Etapa 16.12: reforça o link quando o ponteiro passa sobre ele. */
+.candidate-footer a:hover {
+	/* Etapa 16.13: clareia o ciano durante o hover. */
+	color: white;
+}
+
+/* Etapa 16.14: colore e dimensiona o coração para o perfil atual do Lula. */
+.candidate-footer ion-icon {
+	/* Etapa 16.15: aplica vermelho ao coração; no futuro poderá ser substituído pela cor do outro perfil. */
+	color: #e31b23;
+	/* Etapa 16.16: deixa o coração ligeiramente maior que o texto. */
+	font-size: 18px;
+	/* Etapa 16.17: cria pequeno espaço entre a frase e o coração. */
+	margin-left: 4px;
+	/* Etapa 16.18: alinha visualmente o coração à linha do texto. */
+	vertical-align: -3px;
+}
+
+/* Etapa 16.19: troca o coração para azul quando o perfil do Flávio está selecionado. */
+body.is-flavio .candidate-footer ion-icon {
+	/* Etapa 16.20: usa azul para diferenciar o coração na versão do Flávio. */
+	color: #2563eb;
+}
